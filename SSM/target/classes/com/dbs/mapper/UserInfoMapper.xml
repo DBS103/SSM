@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+<mapper namespace="com.dbs.mapper.UserInfoMapper">
+	
+	<select id="selectByEntity" parameterType="user" resultType="user">
+		select userId,userName,userPwd from userInfo where userName=#{userName} and userPwd = #{userPwd}
+	</select>
+	<resultMap type="user" id="users">
+		<id property="userId" column="userId" javaType="int" jdbcType="INTEGER"></id>
+		<result property="userName" column="userName" javaType="String" jdbcType="VARCHAR"></result>
+		<result property="userPwd" column="userPwd" javaType="String" jdbcType="VARCHAR"></result>
+	</resultMap>
+	
+	<select id="selectAll" resultMap="users">
+		select userId,userName,userPwd from userInfo	
+	</select>	
+	
+</mapper>
+
+
+
+
+
+
+
